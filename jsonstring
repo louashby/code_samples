@@ -29,3 +29,7 @@ private List<JSONObject> getJSONObjectList(List<?> list) {
 		}
 		return jsonList;
 	}
+
+private String postProcessJsonString(String resultJsonString) {
+		return resultJsonString.replaceFirst("cfgTotalPrice", "CfgTotalPrice");
+	}
