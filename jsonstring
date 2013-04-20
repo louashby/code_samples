@@ -16,3 +16,13 @@ public String toJsonString() throws JSONException {
 
 		return resultJsonString;
 	}
+
+private List<JSONObject> getJSONObjectList(List<?> list) {
+		List<JSONObject> jsonList = new ArrayList<JSONObject>();
+		if (list != null) {
+			for (Object obj : list) {
+				jsonList.add(new JSONObject(obj));
+			}
+		}
+		return jsonList;
+	}
