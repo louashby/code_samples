@@ -1,0 +1,18 @@
+public String toJsonString() throws JSONException {
+  	JSONObject jsonObject = new JSONObject();
+		String resultJsonString;
+
+		try {
+			jsonObject.put("parameterGroups", getJSONObjectList(getFinanceParameterDataSet().getParameterGroups()));
+			jsonObject.put("dependencies", getJSONObjectList(getFinanceParameterDataSet().getParameterDependencies()));
+			jsonObject.put("constants", new JSONObject(getFinanceParameterDataSet().getParameterConstant()));
+			jsonObject.put("parameters", getJSONObjectList(getFinanceParameterDataSet().getParameters()));
+		} catch (NullPointerException npe) {
+			LOG.severe("Error during JSON creation: " + npe.getMessage());
+		}
+
+		resultJsonString = jsonObject.toString();
+		resultJsonString = postProcessJsonString(resultJsonString);
+
+		return resultJsonString;
+	}
