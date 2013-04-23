@@ -1,0 +1,13 @@
+// write 
+var jsonDataString = JSON.parse(dataString);
+                    var gavarString = jsonDataString.gavariant.applicationMode+", "+jsonDataString.gavariant.isoCountryCode+", "+jsonDataString.gavariant.brand;
+                    localStorage['gavar'] = gavarString;
+                    console.log("gavar: "+localStorage['gavar']);
+
+
+//read
+<script>
+      $(document).ready(function(){
+        $("img[id=logoImage]").attr("title",localStorage['gavar']);
+      });
+  </script>
