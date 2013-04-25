@@ -11,3 +11,11 @@ var jsonDataString = JSON.parse(dataString);
         $("img[id=logoImage]").attr("title",localStorage['gavar']);
       });
   </script>
+
+ function putToLocalStorage(position, item){
+          localStorage[position] = JSON.stringify(item);
+      }
+
+      function getFromLocalStorage(position){
+          return JSON.parse(localStorage[position]);
+      }
