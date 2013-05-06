@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 
 public class PrintMethodsUtil {
 
+  public static final String GET = "get";
+  public static final String SET = "set";
+
   public static void printMethods(Object instance, String prefix) {
     try {
       Class c = instance.getClass();
@@ -12,7 +15,11 @@ public class PrintMethodsUtil {
       Method m[] = c.getMethods();
       for (int i = 0; i < m.length; i++)
         if (m[i].getName().startsWith(prefix)) {
-          System.out.println(instanceName + "." + m[i].getName() + "(\"value\");");
+          if (prefix.equals(GET)) {
+            System.out.println(instanceName + "." + m[i].getName() + ";");
+          } else {
+            System.out.println(instanceName + "." + m[i].getName() + "(\"value\");");
+          }
         }
 
     } catch (Throwable e) {
@@ -28,10 +35,10 @@ public class PrintMethodsUtil {
   }
 
   public static void printGetters(Object instance) {
-    printMethods(instance, "get");
+    printMethods(instance, GET);
   }
 
   public static void printSetters(Object instance) {
-    printMethods(instance, "set");
+    printMethods(instance, SET);
   }
 }
